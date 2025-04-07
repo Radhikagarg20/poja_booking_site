@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>पंडित जी से संपर्क करें</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: gradientShift 10s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .form-container {
+      background: #fff;
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      width: 360px;
+      text-align: center;
+      animation: slideUp 1s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    h2 {
+      color: #d32f2f;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      text-align: left;
+      margin: 10px 0 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      margin-bottom: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #d32f2f;
+      outline: none;
+    }
+
+    textarea {
+      resize: none;
+      height: 80px;
+    }
+
+    button {
+      background-color: #d32f2f;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #b71c1c;
+    }
+
+    /* Floating icons */
+    .floating-icon {
+      position: fixed;
+      bottom: 20px;
+      width: 40px;
+      height: 40px;
+      background: #fff;
+      border-radius: 50%;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .floating-icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .email-icon {
+      left: 20px;
+    }
+
+    .whatsapp-icon {
+      right: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h2>पंडित जी से संपर्क करें</h2>
+
+    <form id="bookingForm" action="https://formsubmit.co/shravangurujinashik@gmail.com" method="POST">
+      <input type="text" name="_honey" style="display:none">
+
+      <label>🔖 सेवा का नाम:</label>
+      <input type="text" name="service_name" id="service_name" required>
+    
+      <label>🔸 आपका नाम:</label>
+      <input type="text" name="name" id="name" required>
+    
+      <label>📱 मोबाइल नंबर:</label>
+      <input type="tel" name="phone" id="phone" required pattern="[0-9]{10}" title="10 अंकों का मोबाइल नंबर डालें">
+    
+      <label>💬 संदेश:</label>
+      <textarea name="message" id="message" required></textarea>
+    
+      <!-- ✅ Added Hidden Fields -->
+      <input type="hidden" name="_next" value="https://radhikagarg20.github.io/Pooja_Booking/thankyou.html">
+
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_subject" value="💌 नई सेवा बुकिंग - वेबसाइट से">
+      <input type="hidden" name="_template" value="table">
+    
+      <button type="submit">📩 बुक करें</button>
+    </form>
+  </div>
+
+  <!-- Floating Icons -->
+  <a href="mailto:shravangurujinashik@gmail.com" class="floating-icon email-icon" title="ईमेल करें">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon">
+  </a>
+
+  <a href="https://wa.me/918766896410" target="_blank" class="floating-icon whatsapp-icon" title="WhatsApp पर संपर्क करें">
+    <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Icon">
+  </a>
+
+  <script>
+    window.onload = function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const service = urlParams.get("service");
+      if (service) {
+        document.getElementById("service_name").value = decodeURIComponent(service);
+      }
+    };
+  </script>
+  
+</body>
+</html>

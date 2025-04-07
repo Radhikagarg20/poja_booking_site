@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank you</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #ff9a9e, #fad0c4);
+      height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .thankyou-container {
+      background: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      animation: fadeIn 1.2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      color: #e63946;
+      font-size: 28px;
+    }
+
+    #message {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    .home-button {
+      display: inline-block;
+      margin-top: 20px;
+      background: #ff477e;
+      color: white;
+      text-decoration: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+
+    .home-button:hover {
+      background: #d81b60;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="thankyou-container">
+    <h1>🎉 बुकिंग सफल रही!</h1>
+    <div id="message"></div>
+    <a href="index.html" class="home-button">🏠 होम पेज</a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const name = params.get("name") || "ग्राहक";
+    const service = params.get("service") || "सेवा";
+
+    document.getElementById("message").innerHTML = `
+      <p>धन्यवाद, <b>${name}</b>! आपकी <b>${service}</b> सेवा बुक हो गई है।<br>हम शीघ्र ही आपसे संपर्क करेंगे।</p>
+    `;
+
+    // Confetti effect 🎊
+    function launchConfetti() {
+      const confettiElement = document.createElement("div");
+      confettiElement.innerHTML = "🎊";
+      confettiElement.style.position = "fixed";
+      confettiElement.style.left = Math.random() * window.innerWidth + "px";
+      confettiElement.style.top = "-50px";
+      confettiElement.style.fontSize = "30px";
+      confettiElement.style.opacity = "0.8";
+      confettiElement.style.transition = "transform 3s ease-out, opacity 2s";
+      document.body.appendChild(confettiElement);
+
+      setTimeout(() => {
+        confettiElement.style.transform = `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`;
+        confettiElement.style.opacity = "0";
+      }, 100);
+
+      setTimeout(() => {
+        confettiElement.remove();
+      }, 2000);
+    }
+
+    // Trigger confetti multiple times
+    setInterval(launchConfetti, 500);
+  </script>
+
+</body>
+</html>
