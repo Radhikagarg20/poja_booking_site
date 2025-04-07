@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://radhikagarg20.github.io/poja_booking_site/sitemap.xml
